@@ -1,0 +1,724 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://script/world.gd" type="Script" id=1]
+[ext_resource path="res://scenes/dragObj.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25, 25 )
+
+[node name="World" type="Node"]
+script = ExtResource( 1 )
+
+[node name="scoreboard" type="Panel" parent="."]
+margin_right = 154.0
+margin_bottom = 40.0
+
+[node name="score" type="Label" parent="scoreboard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 27.0
+margin_right = -77.0
+text = "Score:"
+valign = 1
+
+[node name="points" type="Label" parent="scoreboard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+align = 1
+valign = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 306.0
+margin_right = -32.0
+mouse_filter = 2
+custom_constants/vseparation = 20
+custom_constants/hseparation = 19
+columns = 8
+
+[node name="Letter1" type="Panel" parent="GridContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter1" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter1/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter2" type="Panel" parent="GridContainer"]
+margin_left = 69.0
+margin_right = 119.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter2" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter2/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter3" type="Panel" parent="GridContainer"]
+margin_left = 138.0
+margin_right = 188.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter3" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter3/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter4" type="Panel" parent="GridContainer"]
+margin_left = 207.0
+margin_right = 257.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter4" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter4/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter5" type="Panel" parent="GridContainer"]
+margin_left = 276.0
+margin_right = 326.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter5" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter5/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter6" type="Panel" parent="GridContainer"]
+margin_left = 345.0
+margin_right = 395.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter6" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter6/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter7" type="Panel" parent="GridContainer"]
+margin_left = 414.0
+margin_right = 464.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter7" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter7/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter8" type="Panel" parent="GridContainer"]
+margin_left = 483.0
+margin_right = 533.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter8" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter8/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter9" type="Panel" parent="GridContainer"]
+margin_top = 70.0
+margin_right = 50.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter9"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter9" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter9/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter10" type="Panel" parent="GridContainer"]
+margin_left = 69.0
+margin_top = 70.0
+margin_right = 119.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter10"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter10" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter10/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter11" type="Panel" parent="GridContainer"]
+margin_left = 138.0
+margin_top = 70.0
+margin_right = 188.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter11"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter11" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter11/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter12" type="Panel" parent="GridContainer"]
+margin_left = 207.0
+margin_top = 70.0
+margin_right = 257.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter12"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter12" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter12/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter13" type="Panel" parent="GridContainer"]
+margin_left = 276.0
+margin_top = 70.0
+margin_right = 326.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter13"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter13" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter13/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter14" type="Panel" parent="GridContainer"]
+margin_left = 345.0
+margin_top = 70.0
+margin_right = 395.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter14"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter14" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter14/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter15" type="Panel" parent="GridContainer"]
+margin_left = 414.0
+margin_top = 70.0
+margin_right = 464.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter15"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter15" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter15/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter16" type="Panel" parent="GridContainer"]
+margin_left = 483.0
+margin_top = 70.0
+margin_right = 533.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter16"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter16" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter16/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter17" type="Panel" parent="GridContainer"]
+margin_top = 140.0
+margin_right = 50.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter17"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter17" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter17/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter18" type="Panel" parent="GridContainer"]
+margin_left = 69.0
+margin_top = 140.0
+margin_right = 119.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter18"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter18" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter18/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter19" type="Panel" parent="GridContainer"]
+margin_left = 138.0
+margin_top = 140.0
+margin_right = 188.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter19"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter19" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter19/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter20" type="Panel" parent="GridContainer"]
+margin_left = 207.0
+margin_top = 140.0
+margin_right = 257.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter20"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter20" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter20/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter21" type="Panel" parent="GridContainer"]
+margin_left = 276.0
+margin_top = 140.0
+margin_right = 326.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter21"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter21" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter21/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter22" type="Panel" parent="GridContainer"]
+margin_left = 345.0
+margin_top = 140.0
+margin_right = 395.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter22"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter22" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter22/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter23" type="Panel" parent="GridContainer"]
+margin_left = 414.0
+margin_top = 140.0
+margin_right = 464.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter23"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter23" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter23/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter24" type="Panel" parent="GridContainer"]
+margin_left = 483.0
+margin_top = 140.0
+margin_right = 533.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter24"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter24" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter24/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter25" type="Panel" parent="GridContainer"]
+margin_top = 210.0
+margin_right = 50.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter25"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter25" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter25/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="Letter26" type="Panel" parent="GridContainer"]
+margin_left = 69.0
+margin_top = 210.0
+margin_right = 119.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GridContainer/Letter26"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Area2D" type="Area2D" parent="GridContainer/Letter26" groups=["area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Letter26/Area2D"]
+position = Vector2( 25, 25 )
+shape = SubResource( 1 )
+
+[node name="dragable" type="Node2D" parent="."]
+
+[node name="dragObj1" parent="dragable" instance=ExtResource( 2 )]
+position = Vector2( 150, 100 )
+
+[node name="Label" type="Label" parent="dragable/dragObj1"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "A"
+
+[node name="dragObj2" parent="dragable" instance=ExtResource( 2 )]
+position = Vector2( 220, 100 )
+
+[node name="Label" type="Label" parent="dragable/dragObj2"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "A"
+
+[node name="dragObj3" parent="dragable" instance=ExtResource( 2 )]
+position = Vector2( 290, 100 )
+
+[node name="Label" type="Label" parent="dragable/dragObj3"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "A"
+
+[node name="dragObj4" parent="dragable" instance=ExtResource( 2 )]
+position = Vector2( 360, 100 )
+
+[node name="Label" type="Label" parent="dragable/dragObj4"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "A"
+
+[node name="dragObj5" parent="dragable" instance=ExtResource( 2 )]
+position = Vector2( 430, 100 )
+
+[node name="Label" type="Label" parent="dragable/dragObj5"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "A"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 515.0
+margin_top = 32.0
+margin_right = 567.0
+margin_bottom = 52.0
+text = "reload"
+
+[node name="success" type="Popup" parent="."]
+margin_left = 173.0
+margin_top = 160.0
+margin_right = 421.0
+margin_bottom = 360.0
+
+[node name="Panel" type="Panel" parent="success"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="success/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "NICE JOB"
+align = 1
+valign = 1
+
+[node name="failed" type="Popup" parent="."]
+margin_left = 173.0
+margin_top = 160.0
+margin_right = 421.0
+margin_bottom = 360.0
+
+[node name="Panel" type="Panel" parent="failed"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="failed/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Wrong!"
+align = 1
+valign = 1
+
+[node name="WIN" type="Popup" parent="."]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="WIN"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="WIN/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "YOU WIN!"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="play" type="Button" parent="WIN"]
+margin_left = 260.0
+margin_top = 237.0
+margin_right = 345.0
+margin_bottom = 257.0
+text = "Play AGAIN"
+
+[node name="scoreLbl" type="Label" parent="WIN"]
+margin_left = 263.0
+margin_top = 327.0
+margin_right = 344.0
+margin_bottom = 341.0
+text = "Your score"
+uppercase = true
+
+[connection signal="area_entered" from="GridContainer/Letter1/Area2D" to="." method="_on_Area2D_area_entered_textA"]
+[connection signal="area_entered" from="GridContainer/Letter2/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="GridContainer/Letter2/Area2D" to="." method="_on_Area2D_area_entered_textB"]
+[connection signal="area_entered" from="GridContainer/Letter3/Area2D" to="." method="_on_Area2D_area_entered_textC"]
+[connection signal="area_entered" from="GridContainer/Letter4/Area2D" to="." method="_on_Area2D_area_entered_textD"]
+[connection signal="area_entered" from="GridContainer/Letter5/Area2D" to="." method="_on_Area2D_area_entered_textE"]
+[connection signal="area_entered" from="GridContainer/Letter6/Area2D" to="." method="_on_Area2D_area_entered_textF"]
+[connection signal="area_entered" from="GridContainer/Letter7/Area2D" to="." method="_on_Area2D_area_entered_textG"]
+[connection signal="area_entered" from="GridContainer/Letter8/Area2D" to="." method="_on_Area2D_area_entered_textH"]
+[connection signal="area_entered" from="GridContainer/Letter9/Area2D" to="." method="_on_Area2D_area_entered_textI"]
+[connection signal="area_entered" from="GridContainer/Letter10/Area2D" to="." method="_on_Area2D_area_entered_textJ"]
+[connection signal="area_entered" from="GridContainer/Letter11/Area2D" to="." method="_on_Area2D_area_entered_textK"]
+[connection signal="area_entered" from="GridContainer/Letter12/Area2D" to="." method="_on_Area2D_area_entered_textL"]
+[connection signal="area_entered" from="GridContainer/Letter13/Area2D" to="." method="_on_Area2D_area_entered_textM"]
+[connection signal="area_entered" from="GridContainer/Letter14/Area2D" to="." method="_on_Area2D_area_entered_textN"]
+[connection signal="area_entered" from="GridContainer/Letter15/Area2D" to="." method="_on_Area2D_area_entered_textO"]
+[connection signal="area_entered" from="GridContainer/Letter16/Area2D" to="." method="_on_Area2D_area_entered_textP"]
+[connection signal="area_entered" from="GridContainer/Letter17/Area2D" to="." method="_on_Area2D_area_entered_textQ"]
+[connection signal="area_entered" from="GridContainer/Letter18/Area2D" to="." method="_on_Area2D_area_entered_textR"]
+[connection signal="area_entered" from="GridContainer/Letter19/Area2D" to="." method="_on_Area2D_area_entered_textS"]
+[connection signal="area_entered" from="GridContainer/Letter20/Area2D" to="." method="_on_Area2D_area_entered_textT"]
+[connection signal="area_entered" from="GridContainer/Letter21/Area2D" to="." method="_on_Area2D_area_entered_textU"]
+[connection signal="area_entered" from="GridContainer/Letter22/Area2D" to="." method="_on_Area2D_area_entered_textV"]
+[connection signal="area_entered" from="GridContainer/Letter23/Area2D" to="." method="_on_Area2D_area_entered_textW"]
+[connection signal="area_entered" from="GridContainer/Letter24/Area2D" to="." method="_on_Area2D_area_entered_textX"]
+[connection signal="area_entered" from="GridContainer/Letter25/Area2D" to="." method="_on_Area2D_area_entered_textY"]
+[connection signal="area_entered" from="GridContainer/Letter26/Area2D" to="." method="_on_Area2D_area_entered_textZ"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="WIN/play" to="." method="_on_play_pressed"]
