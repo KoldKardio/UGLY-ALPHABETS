@@ -221,6 +221,7 @@ func popSuccess():
 		
 		boxLeft -= 1
 		if boxLeft == 0:
+			yield(get_tree().create_timer(1), "timeout")
 			uwin.visible = true
 			$WIN/scoreLbl.text = str("Your score: ", scr) 
 		

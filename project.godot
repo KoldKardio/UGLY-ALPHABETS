@@ -21,6 +21,8 @@ xtr="*res://script/autoload.gd"
 [display]
 
 window/size/width=600
+window/size/test_width=600
+window/size/test_height=600
 
 [gui]
 
