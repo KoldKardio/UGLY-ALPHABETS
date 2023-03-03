@@ -22,6 +22,7 @@ valign = 1
 [node name="area" type="Area2D" parent="." groups=["area"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area"]
+visible = false
 position = Vector2( 25, 25 )
 shape = SubResource( 1 )
 

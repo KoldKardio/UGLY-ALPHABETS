@@ -2,7 +2,7 @@ extends Node2D
 
 var selected = false
 var drag_speed = 25
-onready var nde = $Sprite/Panel/Label
+onready var nde = $Sprite/Label
 
 func _on_Area2D_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("click"):

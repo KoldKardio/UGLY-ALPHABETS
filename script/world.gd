@@ -1,32 +1,42 @@
 extends Node
 
-onready var node = get_tree().get_nodes_in_group("letter")
 onready var area = get_tree().get_nodes_in_group("area")
+onready var pan = get_tree().get_nodes_in_group("pan")
+onready var node = get_tree().get_nodes_in_group("letter")
 onready var init_pos = get_tree().get_nodes_in_group("init_pos")
 
-onready var grid = $GridContainer
+onready var uwin = $WIN
 onready var drag = $dragable
 onready var failed = $failed
 onready var success = $success
+onready var grid = $GridContainer
 onready var points = $scoreboard/points
-onready var uwin = $WIN
+onready var textFont = load("res://font.tres")
+onready var confetti = $success/confetti
+onready var sadEmo = $failed/errorAnim
 
 #var newScore
 var rng = RandomNumberGenerator.new()
 var current
 var lnum = Array() 
 const loc = Array()
-var score = Array()
 var oldData = Array()
-const resetScr = Array()
 var boxLeft = 5
+var score = Array()
+const resetScr = Array()
 
 var alphabets = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var colors = [Color.red, Color.green, Color.salmon, Color.violet, Color.aqua, Color.orange]
 var dragItem = Array()
 var gridItem = Array()
 var lostItem = Array()
+var winData = Array()
+var textColor
 
 func _ready():
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	
 	# disable some grids
 	for i in area.size():
 		area[i].get_child(0).disabled = true
@@ -56,9 +66,31 @@ func _ready():
 	# print(oldData)
 	# print(gridItem[3].get_child(0).text)
 	
-	areaBoxCheck()
-	
+#	areaBoxCheck()
+	randomColors()
+	changeColors()
 	nodeKoPos()
+	
+	winData = dragItem
+	pass
+
+func randomColors() -> void:
+	randomize()
+	var num = randi() % colors.size()
+	textColor = colors[num]
+	pass
+
+func changeColors() -> void:
+	randomColors()
+	
+	for i in alphabets.size():
+		gridItem[i].get_child(0).set("custom_colors/font_color", textColor)
+		gridItem[i].get_child(0).set("custom_fonts/font", textFont)
+		randomColors()
+		pass
+	for i in node.size():
+		randomColors()
+		node[i].get_child(0).set("custom_colors/font_color", textColor)
 	
 	pass
 
@@ -149,7 +181,7 @@ func replaceDrags(drags):
 	#print (drag[0].get_child(0).get_child(0).text)
 	
 	for i in drags.size():
-		drags[i].get_child(0).get_child(0).text = lostItem[i]
+		drags[i].get_child(0).text = lostItem[i]
 		dragItem[i].get_child(1).text = lostItem[i]
 		pass
 	pass
@@ -163,26 +195,9 @@ func replaceGridItem():
 				# print("helo")
 				oldData.append(gridItem[items].get_child(0).text)
 				gridItem[items].get_child(0).visible = false
+				area[items].get_child(0).disabled = false
+				pan[items].visible = true
 		pass
-	pass
-
-func areaBoxCheck():
-	
-	# open areabox
-	for item in gridItem.size():
-		var nue = item
-		for xx in lostItem.size():
-			if gridItem[item].get_child(0).text == lostItem[xx]:
-				#print(lostItem[xx])
-				area[nue].get_child(0).disabled = false
-				score.append(area[nue])
-				resetScr.append(area[nue])
-				pass
-			pass
-		
-#	print(resetScr)
-	#check areabox
-	
 	pass
 
 func nodeKoPos():
@@ -192,51 +207,63 @@ func nodeKoPos():
 #	print(loc)
 	pass
 
-
-
 func defPos():
+	yield(get_tree().create_timer(.8), "timeout")
 	#print (loc[0])
+	sadEmo.frame = 0
+	sadEmo.playing = true
 	failed.visible = true
-	boxLeft = 5
-	if failed.visible:
-		var scr = int(str(points.text))
-		scr = 0
-		points.text = str(scr)
-	
-	print(boxLeft)
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(1.5), "timeout")
+	sadEmo.playing = false
 	failed.visible = false
+	
 	for i in 5:
 		init_pos[i].transform = loc[i]
-	
 	pass
 
 func popSuccess():
-	
+	yield(get_tree().create_timer(.8), "timeout")
+	confetti.frame = 0
 	success.visible = true
+	confetti.playing = true
+	
 	if success.visible:
-		var scr = int(str(points.text))
-		scr += 1
-		points.text = str(scr)
+		yield(get_tree().create_timer(1), "timeout")
+		confetti.playing = false
+		success.visible = false
 		
-		boxLeft -= 1
-		if boxLeft == 0:
+		for items in dragItem.size():
+#			print(dragItem[items].get_child(0).get_child(0).text)
+			if current == dragItem[items].get_child(0).get_child(0).text:
+				dragItem[items].visible = false 
+		
+		for abc in gridItem.size():
+#			print(gridItem[0].get_child(0).text)
+			if current == gridItem[abc].get_child(0).text:
+				gridItem[abc].get_child(0).visible = true
+				gridItem[abc].get_child(1).get_child(0).disabled = true
+				
+			pass
+	
+	if !winData[0].visible and !winData[1].visible and !winData[2].visible and !winData[3].visible and !winData[4].visible:
 			yield(get_tree().create_timer(1), "timeout")
 			uwin.visible = true
-			$WIN/scoreLbl.text = str("Your score: ", scr) 
-		
-		
-	yield(get_tree().create_timer(0.8), "timeout")
-	success.visible = false
+	
+	
+#	yield(get_tree().create_timer(1.8), "timeout")
 
 func win():
 	print("all box filled")
 
 func _on_Button_pressed():
-	get_tree().reload_current_scene()
+#	get_tree().reload_current_scene()
+	for i in 5:
+		init_pos[i].transform = loc[i]
 	pass # Replace with function body.
 
 
+## --- Caution --- ##
+# common signal for all alphabets # just repeatition #
 func _on_Area2D_area_entered_textA(area):
 	if node and current == alphabets[0]:
 		print ("hello, its A")
@@ -264,7 +291,6 @@ func _on_Area2D_area_entered_textC(area):
 		defPos()
 		print ("wrong one")
 	pass # Replace with function body.
-
 
 func _on_Area2D_area_entered_textD(area):
 	if node and current == alphabets[3]:
@@ -320,7 +346,6 @@ func _on_Area2D_area_entered_textI(area):
 		print ("wrong one")
 	pass # Replace with function body.
 
-
 func _on_Area2D_area_entered_textJ(area):
 	if node and current == alphabets[9]:
 		popSuccess()
@@ -329,7 +354,6 @@ func _on_Area2D_area_entered_textJ(area):
 		defPos()
 		print ("wrong one")
 	pass # Replace with function body.
-
 
 func _on_Area2D_area_entered_textK(area):
 	if node and current == alphabets[10]:
@@ -340,7 +364,6 @@ func _on_Area2D_area_entered_textK(area):
 		print ("wrong one")
 	pass # Replace with function body.
 
-
 func _on_Area2D_area_entered_textL(area):
 	if node and current == alphabets[11]:
 		popSuccess()
@@ -350,7 +373,6 @@ func _on_Area2D_area_entered_textL(area):
 		print ("wrong one")
 	pass # Replace with function body.
 
-
 func _on_Area2D_area_entered_textM(area):
 	if node and current == alphabets[12]:
 		popSuccess()
@@ -359,7 +381,6 @@ func _on_Area2D_area_entered_textM(area):
 		defPos()
 		print ("wrong one")
 	pass # Replace with function body.
-
 
 func _on_Area2D_area_entered_textN(area):
 	if node and current == alphabets[13]:
@@ -379,7 +400,6 @@ func _on_Area2D_area_entered_textO(area):
 		print ("wrong one")
 	pass # Replace with function body.
 
-
 func _on_Area2D_area_entered_textP(area):
 	if node and current == alphabets[15]:
 		popSuccess()
@@ -388,7 +408,6 @@ func _on_Area2D_area_entered_textP(area):
 		defPos()
 		print ("wrong one")
 	pass # Replace with function body.
-
 
 func _on_Area2D_area_entered_textQ(area):
 	if node and current == alphabets[16]:
@@ -399,7 +418,6 @@ func _on_Area2D_area_entered_textQ(area):
 		print ("wrong one")
 	pass # Replace with function body.
 
-
 func _on_Area2D_area_entered_textR(area):
 	if node and current == alphabets[17]:
 		popSuccess()
@@ -408,7 +426,6 @@ func _on_Area2D_area_entered_textR(area):
 		defPos()
 		print ("wrong one")
 	pass # Replace with function body.
-
 
 func _on_Area2D_area_entered_textS(area):
 	if node and current == alphabets[18]:
@@ -419,7 +436,6 @@ func _on_Area2D_area_entered_textS(area):
 		print ("wrong one")
 	pass # Replace with function body.
 
-
 func _on_Area2D_area_entered_textT(area):
 	if node and current == alphabets[19]:
 		popSuccess()
@@ -428,7 +444,6 @@ func _on_Area2D_area_entered_textT(area):
 		defPos()
 		print ("wrong one")
 	pass # Replace with function body.
-
 
 func _on_Area2D_area_entered_textU(area):
 	if node and current == alphabets[20]:
@@ -439,7 +454,6 @@ func _on_Area2D_area_entered_textU(area):
 		print ("wrong one")
 	pass # Replace with function body.
 
-
 func _on_Area2D_area_entered_textV(area):
 	if node and current == alphabets[21]:
 		popSuccess()
@@ -448,7 +462,6 @@ func _on_Area2D_area_entered_textV(area):
 		defPos()
 		print ("wrong one")
 	pass # Replace with function body.
-
 
 func _on_Area2D_area_entered_textW(area):
 	if node and current == alphabets[22]:
@@ -459,7 +472,6 @@ func _on_Area2D_area_entered_textW(area):
 		print ("wrong one")
 	pass # Replace with function body.
 
-
 func _on_Area2D_area_entered_textX(area):
 	if node and current == alphabets[23]:
 		popSuccess()
@@ -468,7 +480,6 @@ func _on_Area2D_area_entered_textX(area):
 		defPos()
 		print ("wrong one")
 	pass # Replace with function body.
-
 
 func _on_Area2D_area_entered_textY(area):
 	if node and current == alphabets[24]:
@@ -479,7 +490,6 @@ func _on_Area2D_area_entered_textY(area):
 		print ("wrong one")
 	pass # Replace with function body.
 
-
 func _on_Area2D_area_entered_textZ(area):
 	if node and current == alphabets[25]:
 		popSuccess()
@@ -489,7 +499,10 @@ func _on_Area2D_area_entered_textZ(area):
 		print ("wrong one")
 	pass # Replace with function body.
 
-
 func _on_play_pressed():
+	get_tree().reload_current_scene()
+	pass # Replace with function body.
+
+func _on_Button2_pressed():
 	get_tree().reload_current_scene()
 	pass # Replace with function body.
